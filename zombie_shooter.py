@@ -30,7 +30,7 @@ bulletImg = pygame.image.load("bullet.png")
 bulletX = 0
 bulletY = 480
 bulletX_change = 0
-bulletY_change = 2
+bulletY_change = 1.4
 bullet_status = "ready"
 
 # Dead line
@@ -73,7 +73,7 @@ for i in range(enemy_number):
     enemyImg.append(pygame.image.load("zoombie.png"))
     enemyX.append(random.randint(0, 735))
     enemyY.append(random.randint(0, 120))
-    enemyX_change.append(.75)
+    enemyX_change.append(.35)
     enemyY_change.append(70)
 
 
@@ -113,9 +113,9 @@ while running:
         # player control
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                playerX_change = -1
+                playerX_change = -.9
             if event.key == pygame.K_RIGHT:
-                playerX_change = 1
+                playerX_change = .9
             if event.key == pygame.K_SPACE:
                 if bullet_status is "ready":
                     bulletX = playerX
@@ -138,10 +138,10 @@ while running:
 
         enemyX[i] += enemyX_change[i]
         if enemyX[i] < 0:
-            enemyX_change[i] = .75
+            enemyX_change[i] = .7
             enemyY[i] += enemyY_change[i]
         elif enemyX[i] > 736:
-            enemyX_change[i] = -.75
+            enemyX_change[i] = -.7
             enemyY[i] += enemyY_change[i]
 
         # collision here
